@@ -53,11 +53,11 @@ Com essa estrutura, é possível realizar uma análise detalhada da relação en
 8. **Visualização dos Resultados**: Um gráfico de dispersão foi gerado para comparar os valores reais e previstos.
 
 ## Resultados
-- O modelo conseguiu prever a nota geral com uma precisão razoável, proporcionando insights sobre a relação entre as características sensoriais e a avaliação geral da cerveja.
+O modelo conseguiu prever a nota geral com uma precisão razoável, proporcionando insights sobre a relação entre as características sensoriais e a avaliação geral da cerveja.
 
 ## Conclusão
 Este projeto oferece uma visão abrangente sobre as avaliações de cervejas, permitindo que tanto os consumidores quanto os produtores entendam melhor as preferências e tendências no mercado.
 
-| Autor                             |
-|-----------------------------------|
-| <a href="https://github.com/Cyberfn"><img src="https://github.com/Cyberfn.png" width="200" height="200" /></a><br>**Fernando Nonato**|
+## Autor
+[**Fernando Nonato**](https://github.com/Cyberfn)  
+<a href="https://github.com/Cyberfn"><img src="https://github.com/Cyberfn.png" width="150" height="150" /></a>
