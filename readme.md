@@ -1,4 +1,3 @@
-
 # Análise de Avaliações de Cervejas
 
 ## Descrição do Projeto
@@ -48,18 +47,17 @@ Com essa estrutura, é possível realizar uma análise detalhada da relação en
        - `4.5`: "Excelente"
        - `5.0`: "Perfeito"
 4. **Divisão dos Dados**: O conjunto de dados foi dividido em conjuntos de treino e teste (80/20).
-5. **Criação e Treinamento do Modelo**: Diversos modelos de regressão (Linear, Árvore de Decisão, Random Forest e K-Nearest Neighbors) foram criados e treinados para prever a nota geral da cerveja.
-6. **Avaliação do Modelo**: Os modelos foram avaliados utilizando as métricas de erro quadrático médio (MSE) e o coeficiente de determinação (R²).
-7. **Previsões**: Funções foram criadas para prever a nota geral com base em entradas sensoriais.
-8. **Visualização dos Resultados**: Gráficos de dispersão foram gerados para comparar os valores reais e previstos, além de histogramas das avaliações.
+5. **Criação e Treinamento do Modelo**: Um modelo de regressão linear foi criado e treinado para prever a nota geral da cerveja.
+6. **Avaliação do Modelo**: O modelo foi avaliado utilizando as métricas de erro quadrático médio (MSE) e o coeficiente de determinação (R²).
+7. **Previsões**: Foi criada uma função para prever a nota geral com base em entradas sensoriais.
+8. **Visualização dos Resultados**: Um gráfico de dispersão foi gerado para comparar os valores reais e previstos.
 
 ## Resultados
-Os modelos conseguiram prever a nota geral com uma precisão razoável, proporcionando insights sobre a relação entre as características sensoriais e a avaliação geral da cerveja. 
+- O modelo conseguiu prever a nota geral com uma precisão razoável, proporcionando insights sobre a relação entre as características sensoriais e a avaliação geral da cerveja.
 
 ## Conclusão
 Este projeto oferece uma visão abrangente sobre as avaliações de cervejas, permitindo que tanto os consumidores quanto os produtores entendam melhor as preferências e tendências no mercado.
 
-## Autores
 | Autor                             |
 |-----------------------------------|
-| <a href="https://github.com/Cyberfn"><img src="https://github.com/Cyberfn.png" width="200" height="200" /></a><br>**Fernando Nonato** |
+| <a href="https://github.com/Cyberfn"><img src="https://github.com/Cyberfn.png" width="200" height="200" /></a><br>**Fernando Nonato**|
