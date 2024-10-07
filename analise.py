@@ -61,72 +61,138 @@ X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=
 # Modelos de Regressão
 
 # ---------------------------- Regressão Linear --------------------------------
+# Instanciando o modelo de Regressão Linear
 linear_model = LinearRegression()
+
+# Treinando o modelo com os dados de treino
 linear_model.fit(X_train, y_train)
+
+# Fazendo previsões nos dados de teste
 linear_predictions = linear_model.predict(X_test)
+
+# Calculando o erro quadrático médio (MSE) entre os valores reais e previstos
 linear_mse = mean_squared_error(y_test, linear_predictions)
+
+# Calculando o coeficiente de determinação (R²) para avaliar o ajuste do modelo
 linear_r2 = r2_score(y_test, linear_predictions)
 
-# Calcular Acurácia para Regressão Linear
+# Calculando a acurácia da regressão linear
+# A acurácia é definida como a proporção de previsões cuja diferença em relação ao valor real é menor que 10%
 linear_accuracy = np.mean(np.abs((y_test - linear_predictions) / y_test) < 0.1)  # Acurácia entre 0 e 1
-print(f'Regressão Linear - MSE: {linear_mse:.2f}, R²: {linear_r2:.2f}, Acurácia: {linear_accuracy:.2f}')
 
+# Exibindo as métricas de desempenho: MSE, R² e acurácia
+print(f'Regressão Linear - MSE: {linear_mse:.2f}, R²: {linear_r2:.2f}, Acurácia: {linear_accuracy:.2f}')
 # ---------------------------- Regressão Logística ------------------------------
+# Convertendo a variável alvo para binária
+# Classifica como 1 se o valor for maior que 3.0 e 0 caso contrário
 target_binary = (target > 3.0).astype(int)
+
+# Dividindo os dados em conjuntos de treino e teste
+# Utiliza 80% dos dados para treino e 20% para teste
 X_train_logistic, X_test_logistic, y_train_logistic, y_test_logistic = train_test_split(features, target_binary, test_size=0.2, random_state=42)
+
+# Instanciando o modelo de Regressão Logística
 logistic_model = LogisticRegression()
+
+# Treinando o modelo com os dados de treino
 logistic_model.fit(X_train_logistic, y_train_logistic)
+
+# Fazendo previsões nos dados de teste
 logistic_predictions = logistic_model.predict(X_test_logistic)
 
-# Calcular MSE para Regressão Logística (apenas para referência)
+# Calculando o erro quadrático médio (MSE) das previsões
+# MSE é usado apenas como referência aqui, mesmo que não seja a métrica mais apropriada para classificação
 logistic_mse = mean_squared_error(y_test_logistic, logistic_predictions)
 
-# Calcular Acurácia
+# Calculando a acurácia, que é a proporção de previsões corretas
 logistic_accuracy = accuracy_score(y_test_logistic, logistic_predictions)
-print(f'Regressão Logística - MSE: {logistic_mse:.2f}, Acurácia: {logistic_accuracy:.2f}')
 
+# Exibindo as métricas de desempenho: MSE e acurácia
+print(f'Regressão Logística - MSE: {logistic_mse:.2f}, Acurácia: {logistic_accuracy:.2f}')
 # ---------------------------- Árvore de Decisão --------------------------------
+# Instanciando o modelo de Regressão com Árvore de Decisão
 decision_tree_model = DecisionTreeRegressor(random_state=42)
+
+# Treinando o modelo de Árvore de Decisão com os dados de treino
 decision_tree_model.fit(X_train, y_train)
+
+# Fazendo previsões nos dados de teste
 decision_tree_predictions = decision_tree_model.predict(X_test)
+
+# Calculando o erro quadrático médio (MSE) entre os valores reais e previstos
 decision_tree_mse = mean_squared_error(y_test, decision_tree_predictions)
+
+# Calculando o coeficiente de determinação (R²) para avaliar o ajuste do modelo
 decision_tree_r2 = r2_score(y_test, decision_tree_predictions)
 
-# Calcular porcentagem de previsões corretas para Árvore de Decisão
+# Calculando a acurácia da Árvore de Decisão
+# A acurácia é a proporção de previsões cuja diferença em relação ao valor real é menor que 10%
 decision_tree_accuracy = np.mean(np.abs((y_test - decision_tree_predictions) / y_test) < 0.1)
-print(f'Árvore de Decisão - MSE: {decision_tree_mse:.2f}, R²: {decision_tree_r2:.2f}, Acurácia: {decision_tree_accuracy:.2f}')
 
+# Exibindo as métricas de desempenho: MSE, R² e acurácia
+print(f'Árvore de Decisão - MSE: {decision_tree_mse:.2f}, R²: {decision_tree_r2:.2f}, Acurácia: {decision_tree_accuracy:.2f}')
 # ---------------------------- Random Forest -------------------------------------
+# Instanciando o modelo de Regressão com Random Forest
 random_forest_model = RandomForestRegressor(random_state=42)
+
+# Treinando o modelo Random Forest com os dados de treino
 random_forest_model.fit(X_train, y_train)
+
+# Fazendo previsões nos dados de teste
 random_forest_predictions = random_forest_model.predict(X_test)
+
+# Calculando o erro quadrático médio (MSE) entre os valores reais e previstos
 random_forest_mse = mean_squared_error(y_test, random_forest_predictions)
+
+# Calculando o coeficiente de determinação (R²) para avaliar o ajuste do modelo
 random_forest_r2 = r2_score(y_test, random_forest_predictions)
 
-# Calcular porcentagem de previsões corretas para Random Forest
+# Calculando a acurácia do modelo Random Forest
+# A acurácia é a proporção de previsões cuja diferença em relação ao valor real é menor que 10%
 random_forest_accuracy = np.mean(np.abs((y_test - random_forest_predictions) / y_test) < 0.1)
-print(f'Random Forest - MSE: {random_forest_mse:.2f}, R²: {random_forest_r2:.2f}, Acurácia: {random_forest_accuracy:.2f}')
 
+# Exibindo as métricas de desempenho: MSE, R² e acurácia
+print(f'Random Forest - MSE: {random_forest_mse:.2f}, R²: {random_forest_r2:.2f}, Acurácia: {random_forest_accuracy:.2f}')
 # ---------------------------- K-Nearest Neighbors(KNN) ----------------------------
-knn_model = KNeighborsRegressor(n_neighbors=5)  # Definindo o número de vizinhos
+# Instanciando o modelo de Regressão K-Nearest Neighbors (KNN)
+# Definindo o número de vizinhos a considerar nas previsões (n_neighbors=5)
+knn_model = KNeighborsRegressor(n_neighbors=5)
+
+# Treinando o modelo KNN com os dados de treino
 knn_model.fit(X_train, y_train)
+
+# Fazendo previsões nos dados de teste
 knn_predictions = knn_model.predict(X_test)
+
+# Calculando o erro quadrático médio (MSE) entre os valores reais e previstos
 knn_mse = mean_squared_error(y_test, knn_predictions)
+
+# Calculando o coeficiente de determinação (R²) para avaliar o ajuste do modelo
 knn_r2 = r2_score(y_test, knn_predictions)
 
-# Calcular porcentagem de previsões corretas para KNN
+# Calculando a acurácia do modelo KNN
+# A acurácia é a proporção de previsões cuja diferença em relação ao valor real é menor que 10%
 knn_accuracy = np.mean(np.abs((y_test - knn_predictions) / y_test) < 0.1)
-print(f'K-Nearest Neighbors - MSE: {knn_mse:.2f}, R²: {knn_r2:.2f}, Acurácia: {knn_accuracy:.2f}')
 
-# ----------- # Support Vector Classifier (SVC)--------------------------------
-# svc_model = SVC()  # Definindo o modelo de SVC
-# svc_model.fit(X_train_logistic, y_train_logistic)  # Usando os dados binários para classificação
+# Exibindo as métricas de desempenho: MSE, R² e acurácia
+print(f'K-Nearest Neighbors - MSE: {knn_mse:.2f}, R²: {knn_r2:.2f}, Acurácia: {knn_accuracy:.2f}')
+# ----------- Support Vector Classifier (SVC)--------------------------------
+# Definindo o modelo de Support Vector Classifier (SVC)
+# svc_model = SVC()
+
+# Treinando o modelo SVC com os dados de treino binários
+# O modelo é ajustado utilizando os dados de entrada (X_train_logistic) e a variável alvo binária (y_train_logistic)
+# svc_model.fit(X_train_logistic, y_train_logistic)
+
+# Fazendo previsões nos dados de teste
 # svc_predictions = svc_model.predict(X_test_logistic)
 
-# # Calcular Acurácia para o modelo SVC
+# Calculando a acurácia para o modelo SVC
+# A acurácia é a proporção de previsões corretas em relação aos valores reais da variável alvo binária
 # svc_accuracy = accuracy_score(y_test_logistic, svc_predictions)
-# print(f'Support Vector Classifier - Acurácia: {svc_accuracy:.2f}')
 
+# Exibindo a acurácia do modelo SVC
+# print(f'Support Vector Classifier - Acurácia: {svc_accuracy:.2f}')
 # ---------------------------- Previsões -----------------------------------------
 
 def predict_overall_review_linear(taste):
@@ -198,16 +264,3 @@ def plot_confusion_matrix(y_true, y_pred, title='Matriz de Confusão'):
 
 #  ----------------Plotando matriz de confusão para o modelo de Regressão Logística ----------------
 plot_confusion_matrix(y_test_logistic, logistic_predictions, title='Matriz de Confusão - Regressão Logística')
-
-#  ---------------- Visualizando as Previsões ----------------
-def plot_predictions(y_true, y_pred, title='Previsões'):
-    plt.figure(figsize=(10, 6))
-    plt.scatter(y_true, y_pred, alpha=0.5)
-    plt.plot([1, 5], [1, 5], color='red', linestyle='--')
-    plt.title(title)
-    plt.xlabel('Valores Verdadeiros')
-    plt.ylabel('Valores Previstos')
-    plt.xlim(1, 5)
-    plt.ylim(1, 5)
-    plt.grid()
-    plt.show()
