@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression, LogisticRegression
-from sklearn.tree import DecisionTreeRegressor
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestRegressor  
 from sklearn.svm import SVC 
 from sklearn.neighbors import KNeighborsRegressor  
@@ -104,33 +104,35 @@ logistic_predictions = logistic_model.predict(X_test_logistic)
 # MSE é usado apenas como referência aqui, mesmo que não seja a métrica mais apropriada para classificação
 logistic_mse = mean_squared_error(y_test_logistic, logistic_predictions)
 
+# calculando a r2_score
+logistic_r2 = r2_score(y_test_logistic, logistic_predictions)
+
 # Calculando a acurácia, que é a proporção de previsões corretas
 logistic_accuracy = accuracy_score(y_test_logistic, logistic_predictions)
 
 # Exibindo as métricas de desempenho: MSE e acurácia
-print(f'Regressão Logística - MSE: {logistic_mse:.2f}, Acurácia: {logistic_accuracy:.2f}')
+print(f'Regressão Logística - MSE: {logistic_mse:.2f}, R²: {logistic_r2:.2f}, Acurácia: {logistic_accuracy:.2f}')
 # ---------------------------- Árvore de Decisão --------------------------------
-# Instanciando o modelo de Regressão com Árvore de Decisão
-decision_tree_model = DecisionTreeRegressor(random_state=42)
+# Instanciando o modelo de Árvore de Decisão Classificadora
+decision_tree_clf = DecisionTreeClassifier(random_state=42)
 
-# Treinando o modelo de Árvore de Decisão com os dados de treino
-decision_tree_model.fit(X_train, y_train)
+# Treinando o modelo de Árvore de Decisão Classificadora com os dados binários
+decision_tree_clf.fit(X_train_logistic, y_train_logistic)
 
 # Fazendo previsões nos dados de teste
-decision_tree_predictions = decision_tree_model.predict(X_test)
+decision_tree_clf_predictions = decision_tree_clf.predict(X_test_logistic)
 
-# Calculando o erro quadrático médio (MSE) entre os valores reais e previstos
-decision_tree_mse = mean_squared_error(y_test, decision_tree_predictions)
+# Calculando o erro quadrático médio (MSE)
+decision_tree_clf_mse = mean_squared_error(y_test_logistic, decision_tree_clf_predictions)
 
-# Calculando o coeficiente de determinação (R²) para avaliar o ajuste do modelo
-decision_tree_r2 = r2_score(y_test, decision_tree_predictions)
+# Calculando o coeficiente de determinação (R²)
+decision_tree_clf_r2 = r2_score(y_test_logistic, decision_tree_clf_predictions)
 
-# Calculando a acurácia da Árvore de Decisão
-# A acurácia é a proporção de previsões cuja diferença em relação ao valor real é menor que 10%
-decision_tree_accuracy = np.mean(np.abs((y_test - decision_tree_predictions) / y_test) < 0.1)
+# Calculando a acurácia da Árvore de Decisão Classificadora
+decision_tree_clf_accuracy = accuracy_score(y_test_logistic, decision_tree_clf_predictions)
 
 # Exibindo as métricas de desempenho: MSE, R² e acurácia
-print(f'Árvore de Decisão - MSE: {decision_tree_mse:.2f}, R²: {decision_tree_r2:.2f}, Acurácia: {decision_tree_accuracy:.2f}')
+print(f'Árvore de Decisão - MSE: {decision_tree_clf_mse:.2f}, R²: {decision_tree_clf_r2:.2f}, Acurácia: {decision_tree_clf_accuracy:.2f}')
 # ---------------------------- Random Forest -------------------------------------
 # Instanciando o modelo de Regressão com Random Forest
 random_forest_model = RandomForestRegressor(random_state=42)
@@ -177,22 +179,31 @@ knn_accuracy = np.mean(np.abs((y_test - knn_predictions) / y_test) < 0.1)
 # Exibindo as métricas de desempenho: MSE, R² e acurácia
 print(f'K-Nearest Neighbors - MSE: {knn_mse:.2f}, R²: {knn_r2:.2f}, Acurácia: {knn_accuracy:.2f}')
 # ----------- Support Vector Classifier (SVC)--------------------------------
-# Definindo o modelo de Support Vector Classifier (SVC)
+# # Selecionando Características e Alvo para o SVC
+# features_svc = df2[['review_aroma']]  # Usando 'review_aroma' como preditor
+# target_binary = (target > 3.0).astype(int)  # A variável alvo binária
+
+# # Dividindo os dados em conjuntos de treino e teste
+# X_train_svc, X_test_svc, y_train_svc, y_test_svc = train_test_split(features_svc, target_binary, test_size=0.2, random_state=42)
+
+# # Definindo o modelo de Support Vector Classifier (SVC)
 # svc_model = SVC()
 
-# Treinando o modelo SVC com os dados de treino binários
-# O modelo é ajustado utilizando os dados de entrada (X_train_logistic) e a variável alvo binária (y_train_logistic)
-# svc_model.fit(X_train_logistic, y_train_logistic)
+# # Treinando o modelo SVC com os dados de treino binários
+# svc_model.fit(X_train_svc, y_train_svc)
 
-# Fazendo previsões nos dados de teste
-# svc_predictions = svc_model.predict(X_test_logistic)
+# # Fazendo previsões nos dados de teste
+# svc_predictions = svc_model.predict(X_test_svc)
 
-# Calculando a acurácia para o modelo SVC
-# A acurácia é a proporção de previsões corretas em relação aos valores reais da variável alvo binária
-# svc_accuracy = accuracy_score(y_test_logistic, svc_predictions)
+# # Calculando o MSE e R² para o modelo SVC
+# svc_mse = mean_squared_error(y_test_svc, svc_predictions)
+# svc_r2 = r2_score(y_test_svc, svc_predictions)
 
-# Exibindo a acurácia do modelo SVC
-# print(f'Support Vector Classifier - Acurácia: {svc_accuracy:.2f}')
+# # Calculando a acurácia para o modelo SVC
+# svc_accuracy = accuracy_score(y_test_svc, svc_predictions)
+
+# # Exibindo a acurácia do modelo SVC, MSE e R²
+# print(f'Support Vector Classifier - Acurácia: {svc_accuracy:.2f}, MSE: {svc_mse:.2f}, R²: {svc_r2:.2f}')
 # ---------------------------- Previsões -----------------------------------------
 
 def predict_overall_review_linear(taste):
@@ -211,8 +222,8 @@ def predict_overall_review_decision_tree(taste):
     input_data = pd.DataFrame({
         'review_taste': [taste]
     })
-    prediction = decision_tree_model.predict(input_data)
-    return prediction[0]  # Retornando o valor previsto sem arredondar
+    prediction = decision_tree_clf.predict(input_data)
+    return "Boa Avaliação" if prediction[0] == 1 else "Má Avaliação"
 
 def predict_overall_review_random_forest(taste):
     input_data = pd.DataFrame({
@@ -228,6 +239,11 @@ def predict_overall_review_knn(taste):
     prediction = knn_model.predict(input_data)
     return "Boa Avaliação" if prediction[0] == 1 else "Má Avaliação"
 
+# def predict_review_class_svc(aroma):
+#     input_data = pd.DataFrame({'review_aroma': [aroma]})
+#     prediction = svc_model.predict(input_data)
+#     return "Boa Avaliação" if prediction[0] == 1 else "Má Avaliação"
+
 # ----------------- Calculando a média do sabor (review_taste) -----------------
 taste_mean = df2['review_taste'].mean()
 print(f"\n Média do sabor (review_taste): {taste_mean:.1f} \n")
@@ -240,9 +256,9 @@ print(f"Regressão Linear -> Nota Geral Prevista: {predicted_overall_linear:.1f}
 predicted_class_logistic = predict_overall_review_logistic(taste_mean)
 print(f"Regressão Logística -> Classificação Prevista: {predicted_class_logistic}")
 
-# ---------------------------- Previsões com Árvore de Decisão -------------------
-predicted_overall_tree = predict_overall_review_decision_tree(taste_mean)
-print(f"Árvore de Decisão -> Nota Geral Prevista: {predicted_overall_tree:.1f}")
+# ----------------------- Previsões com Árvore de Decisão -------------------
+predicted_class_tree = predict_overall_review_decision_tree(taste_mean)
+print(f"Árvore de Decisão (Classificadora) -> Classificação Prevista: {predicted_class_tree}")
 
 # ---------------------------- Previsões com Random Forest -----------------------
 predicted_overall_random_forest = predict_overall_review_random_forest(taste_mean)
@@ -252,15 +268,6 @@ print(f"Random Forest -> Nota Geral Prevista: {predicted_overall_random_forest:.
 predicted_class_knn = predict_overall_review_knn(taste_mean)
 print(f"KNN -> Classificação Prevista: {predicted_class_knn}")
 
-# -------------- Avaliando Modelos com Matriz de Confusão e Previsões --------------
-def plot_confusion_matrix(y_true, y_pred, title='Matriz de Confusão'):
-    cm = confusion_matrix(y_true, y_pred)
-    plt.figure(figsize=(8, 6))
-    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
-    plt.title(title)
-    plt.xlabel('Predito')
-    plt.ylabel('Verdadeiro')
-    plt.show()
-
-#  ----------------Plotando matriz de confusão para o modelo de Regressão Logística ----------------
-plot_confusion_matrix(y_test_logistic, logistic_predictions, title='Matriz de Confusão - Regressão Logística')
+#---------------------------- Previsões com SVC ---------------------------------
+# predicted_class_svc = predict_review_class_svc(df2['review_aroma'].mean())
+# print(f"Support Vector Classifier -> Classificação Prevista: {predicted_class_svc}")
