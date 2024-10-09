@@ -1,3 +1,4 @@
+"""
 # Análise de Avaliações de Cervejas
 
 ## Descrição do Projeto
@@ -46,11 +47,12 @@ Com essa estrutura, é possível realizar uma análise detalhada da relação en
        - `4.0`: "Muito bom"
        - `4.5`: "Excelente"
        - `5.0`: "Perfeito"
-4. **Divisão dos Dados**: O conjunto de dados foi dividido em conjuntos de treino e teste (80/20).
-5. **Criação e Treinamento do Modelo**: Um modelo de regressão linear foi criado e treinado para prever a nota geral da cerveja.
-6. **Avaliação do Modelo**: O modelo foi avaliado utilizando as métricas de erro quadrático médio (MSE) e o coeficiente de determinação (R²).
-7. **Previsões**: Foi criada uma função para prever a nota geral com base em entradas sensoriais.
-8. **Visualização dos Resultados**: Um gráfico de dispersão foi gerado para comparar os valores reais e previstos.
+4. **Amostragem dos Dados**: Apenas 10% do total de dados foram utilizados para análise, para garantir uma amostra representativa, mantendo o desempenho computacional.
+5. **Divisão dos Dados**: O conjunto de dados foi dividido em conjuntos de treino e teste (80/20).
+6. **Criação e Treinamento do Modelo**: Um modelo de regressão linear foi criado e treinado para prever a nota geral da cerveja.
+7. **Avaliação do Modelo**: O modelo foi avaliado utilizando as métricas de erro quadrático médio (MSE) e o coeficiente de determinação (R²).
+8. **Previsões**: Foi criada uma função para prever a nota geral com base em entradas sensoriais.
+9. **Visualização dos Resultados**: Um gráfico de dispersão foi gerado para comparar os valores reais e previstos.
 
 ## Resultados
 O modelo conseguiu prever a nota geral com uma precisão razoável, proporcionando insights sobre a relação entre as características sensoriais e a avaliação geral da cerveja.
