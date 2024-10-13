@@ -1,4 +1,3 @@
-"""
 # Análise de Avaliações de Cervejas
 
 ## Descrição do Projeto
