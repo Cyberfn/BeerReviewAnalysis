@@ -59,6 +59,11 @@ O modelo conseguiu prever a nota geral com uma precisão razoável, proporcionan
 ## Conclusão
 Este projeto oferece uma visão abrangente sobre as avaliações de cervejas, permitindo que tanto os consumidores quanto os produtores entendam melhor as preferências e tendências no mercado.
 
+## Métricas Utilizadas
+- **MSE (Erro Quadrático Médio)**: Mede o quão distantes as previsões estão dos valores reais. Quanto menor, melhor a precisão do modelo.
+- **R² (Coeficiente de Determinação)**: Indica o quanto o modelo explica a variabilidade dos dados, variando de 0 a 1, onde valores mais próximos de 1 indicam melhor desempenho.
+- **Acurácia**: Embora mais comum em classificações, mede a proporção de previsões corretas. Não é usada diretamente em regressão, mas importante em outros tipos de modelos.
+
 ## Autor
 [**Fernando Nonato**](https://github.com/Cyberfn)  
 <a href="https://github.com/Cyberfn"><img src="https://github.com/Cyberfn.png" width="150" height="150" /></a>
