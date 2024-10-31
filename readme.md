@@ -1,12 +1,13 @@
+
 # Análise de Avaliações de Cervejas
 
 ## Descrição do Projeto
-Este projeto explora uma base de dados com mais de 1,5 milhão de avaliações de cervejas feitas por usuários. As avaliações abordam diversos aspectos sensoriais, como aroma, aparência, sabor e sensação, além de informações detalhadas sobre as cervejarias e os estilos de cerveja. A base é ideal para análises de tendências de consumo, preferências de estilos e insights sobre o comportamento dos consumidores de cervejas.
+Este projeto explora uma base de dados com mais de 1,5 milhão de avaliações de cervejas feitas por usuários, obtida no Kaggle: [Beer Reviews Dataset](https://www.kaggle.com/datasets/rdoume/beerreviews). As avaliações abrangem diversos aspectos sensoriais, como aroma, aparência, sabor e sensação na boca, além de informações sobre as cervejarias e os estilos de cerveja. Esta análise é ideal para identificar tendências de consumo, preferências de estilos e gerar insights sobre o comportamento dos consumidores de cerveja.
 
 ## Objetivos
 - **Analisar a qualidade das cervejas** com base em diferentes critérios sensoriais.
 - **Identificar tendências** no consumo de cervejas.
-- **Construir um modelo preditivo** para estimar a nota geral da cerveja (`review_overall`) com base nas avaliações sensoriais.
+- **Construir um modelo preditivo** para estimar a nota geral da cerveja (`review_overall`) com base nas avaliações sensoriais: `review_aroma`, `review_appearance`, `review_palate`, `review_taste`, e `review_overall`.
 
 ## Estrutura dos Dados
 A base de dados contém as seguintes variáveis:
@@ -16,21 +17,21 @@ A base de dados contém as seguintes variáveis:
 | **brewery_id**            | Identificador único da cervejaria.                |
 | **brewery_name**          | Nome da cervejaria.                              |
 | **review_time**           | Data e hora da avaliação.                        |
-| **review_overall**        | Nota geral da cerveja (escala de 1 a 5).        |
-| **review_aroma**          | Avaliação do aroma (escala de 1 a 5).           |
-| **review_appearance**     | Avaliação da aparência (escala de 1 a 5).       |
+| **review_overall**        | Nota geral da cerveja (escala de 1 a 5).         |
+| **review_aroma**          | Avaliação do aroma (escala de 1 a 5).            |
+| **review_appearance**     | Avaliação da aparência (escala de 1 a 5).        |
 | **review_profilename**    | Nome de usuário do avaliador.                    |
 | **beer_style**            | Estilo ou tipo de cerveja.                       |
-| **review_palate**         | Avaliação da sensação na boca (escala de 1 a 5).|
-| **review_taste**          | Avaliação do sabor (escala de 1 a 5).           |
+| **review_palate**         | Avaliação da sensação na boca (escala de 1 a 5). |
+| **review_taste**          | Avaliação do sabor (escala de 1 a 5).            |
 | **beer_name**             | Nome da cerveja.                                 |
 | **beer_abv**              | Teor alcoólico da cerveja (ABV - Alcohol by Volume). |
 | **beer_beerid**           | Identificador único da cerveja.                  |
 
-Com essa estrutura, é possível realizar uma análise detalhada da relação entre os diferentes aspectos sensoriais e as notas atribuídas pelos consumidores, proporcionando insights valiosos sobre a indústria cervejeira.
+A estrutura dos dados permite uma análise detalhada da relação entre os diferentes aspectos sensoriais e as notas atribuídas pelos consumidores, proporcionando insights valiosos sobre a indústria cervejeira.
 
 ## Metodologia
-1. **Importação de Bibliotecas**: Utilizamos bibliotecas como `pandas`, `numpy`, `sklearn` e `matplotlib` para manipulação de dados, modelagem e visualização.
+1. **Importação de Bibliotecas**: Utilizamos `pandas`, `numpy`, `sklearn`, e `matplotlib` para manipulação de dados, modelagem e visualização.
 2. **Carregamento dos Dados**: Os dados foram carregados de um arquivo CSV e armazenados em um DataFrame.
 3. **Preparação dos Dados**:
    - Seleção de características e variável alvo (`review_overall`).
@@ -46,7 +47,7 @@ Com essa estrutura, é possível realizar uma análise detalhada da relação en
        - `4.0`: "Muito bom"
        - `4.5`: "Excelente"
        - `5.0`: "Perfeito"
-4. **Amostragem dos Dados**: Apenas 10% do total de dados foram utilizados para análise, para garantir uma amostra representativa, mantendo o desempenho computacional.
+4. **Amostragem dos Dados**: Apenas 10% dos dados foram utilizados para análise, para garantir uma amostra representativa mantendo o desempenho computacional.
 5. **Divisão dos Dados**: O conjunto de dados foi dividido em conjuntos de treino e teste (80/20).
 6. **Criação e Treinamento do Modelo**: Um modelo de regressão linear foi criado e treinado para prever a nota geral da cerveja.
 7. **Avaliação do Modelo**: O modelo foi avaliado utilizando as métricas de erro quadrático médio (MSE) e o coeficiente de determinação (R²).
@@ -54,10 +55,10 @@ Com essa estrutura, é possível realizar uma análise detalhada da relação en
 9. **Visualização dos Resultados**: Um gráfico de dispersão foi gerado para comparar os valores reais e previstos.
 
 ## Resultados
-O modelo conseguiu prever a nota geral com uma precisão razoável, proporcionando insights sobre a relação entre as características sensoriais e a avaliação geral da cerveja.
+O modelo conseguiu prever a nota geral com uma precisão razoável, oferecendo insights sobre a relação entre as características sensoriais e a avaliação geral da cerveja.
 
 ## Conclusão
-Este projeto oferece uma visão abrangente sobre as avaliações de cervejas, permitindo que tanto os consumidores quanto os produtores entendam melhor as preferências e tendências no mercado.
+Este projeto oferece uma visão abrangente sobre as avaliações de cervejas, permitindo que tanto consumidores quanto produtores entendam melhor as preferências e tendências no mercado.
 
 ## Métricas Utilizadas
 - **MSE (Erro Quadrático Médio)**: Mede o quão distantes as previsões estão dos valores reais. Quanto menor, melhor a precisão do modelo.
