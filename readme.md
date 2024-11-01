@@ -7,7 +7,7 @@ Este projeto explora uma base de dados com mais de 1,5 milhão de avaliações d
 ## Objetivos
 - **Analisar a qualidade das cervejas** com base em diferentes critérios sensoriais.
 - **Identificar tendências** no consumo de cervejas.
-- **Construir um modelo preditivo** para estimar a nota geral da cerveja (`review_overall`) com base nas avaliações sensoriais: `review_aroma`, `review_appearance`, `review_palate`, `review_taste`, e `review_overall`.
+- **Construir um modelo preditivo** para estimar a nota geral da cerveja (`review_overall`) com base nas avaliações sensoriais: `review_aroma`, `review_appearance`, `review_palate` e `review_taste`.
 
 ## Estrutura dos Dados
 A base de dados contém as seguintes variáveis:
